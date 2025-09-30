@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Dasar Learning Path</title>
+    <meta
+      name="description"
+      content="Peta perjalanan belajar web dasar lengkap dari HTML, CSS, JavaScript hingga PHP dengan navigasi per modul yang rapi."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Plus Jakarta Sans', 'ui-sans-serif', 'system-ui'],
+            },
+            colors: {
+              primary: '#2563eb',
+              secondary: '#0f172a',
+              muted: '#e2e8f0',
+              accent: '#22d3ee',
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .scrollbar-thin::-webkit-scrollbar {
+        width: 8px;
+      }
+      .scrollbar-thin::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .scrollbar-thin::-webkit-scrollbar-thumb {
+        background-color: rgba(37, 99, 235, 0.3);
+        border-radius: 9999px;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-100">
+    <div class="relative mx-auto flex max-w-7xl flex-col gap-6 px-6 pb-20 pt-16 lg:flex-row lg:gap-10 xl:px-12">
+      <main class="flex-1 lg:pr-6 xl:pr-10">
+        <header class="mb-12 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-10 shadow-2xl shadow-slate-900/40 ring-1 ring-white/5">
+          <p class="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
+            Praktikum Pemergraman Web
+            <span class="inline-flex h-2 w-2 rounded-full bg-accent/80"></span>
+          </p>
+
+          <p class="mt-6 max-w-2xl text-base text-slate-300 sm:text-lg">
+            Mulai dari struktur HTML hingga integrasi PHP &amp; AJAX. Jelajahi materi, demo, dan studi kasus setiap pertemuan dengan navigasi cepat dan tampilan yang nyaman untuk berbagai perangkat.
+          </p>
+          <dl class="mt-8 grid gap-6 sm:grid-cols-3">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-sm shadow-slate-900/20">
+              <dt class="text-xs uppercase tracking-widest text-slate-400">Total Modul</dt>
+              <dd class="text-2xl font-semibold text-white" data-stat-total>14</dd>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-sm shadow-slate-900/20">
+              <dt class="text-xs uppercase tracking-widest text-slate-400">Materi Interaktif</dt>
+              <dd class="text-2xl font-semibold text-white" data-stat-lessons>0</dd>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-sm shadow-slate-900/20">
+              <dt class="text-xs uppercase tracking-widest text-slate-400">Status</dt>
+              <dd class="text-2xl font-semibold text-emerald-300" data-stat-complete>0 selesai</dd>
+            </div>
+          </dl>
+        </header>
+
+        <section class="mb-10 flex flex-col gap-4 rounded-3xl bg-white/5 p-6 shadow-lg shadow-slate-900/30 ring-1 ring-white/10 sm:flex-row sm:items-center sm:justify-between">
+          <div class="w-full sm:w-3/5">
+            <label for="module-search" class="mb-2 block text-xs font-semibold uppercase tracking-widest text-slate-400">Cari modul / materi</label>
+            <div class="relative">
+              <input
+                id="module-search"
+                type="search"
+                placeholder="Cari topik, kata kunci, atau nama file..."
+                class="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-5 py-4 text-sm text-white placeholder:text-slate-500 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50"
+                data-search
+              />
+              <svg class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m21 21-4.35-4.35m0-6.15a6.75 6.75 0 1 1-13.5 0 6.75 6.75 0 0 1 13.5 0Z" />
+              </svg>
+            </div>
+          </div>
+          <div class="w-full sm:w-2/5">
+            <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-slate-400">Filter kategori</p>
+            <div class="flex flex-wrap gap-2" data-tags>
+              <!-- Tag buttons injected via JS -->
+            </div>
+          </div>
+        </section>
+
+        <div class="flex flex-col gap-8" data-modules>
+          <!-- Module cards injected via JS -->
+        </div>
+        <p class="mt-10 hidden rounded-3xl border border-dashed border-white/20 bg-white/5 p-8 text-center text-sm text-slate-400" data-empty>
+          Tidak ada modul yang cocok dengan pencarian atau filter. Coba kata kunci lain.
+        </p>
+      </main>
+
+      <aside class="w-full shrink-0 lg:w-72 xl:w-80">
+        <div class="sticky top-8 rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-2xl shadow-slate-900/40 backdrop-blur lg:h-[calc(100vh-4rem)] lg:overflow-y-auto lg:pl-4 scrollbar-thin">
+          <div class="mb-6 flex items-center justify-between">
+            <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">Navigasi Modul</h2>
+            <span class="rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-primary" data-sidebar-count>14</span>
+          </div>
+          <nav class="space-y-1" data-sidebar>
+            <!-- Sidebar links injected via JS -->
+          </nav>
+          <div class="mt-8 rounded-2xl border border-primary/20 bg-primary/10 p-4 text-sm text-slate-200">
+            <h3 class="mb-2 text-xs font-semibold uppercase tracking-widest text-primary">Tips GitHub Pages</h3>
+            <ul class="space-y-1 text-xs text-slate-300">
+              <li>• Simpan file ini sebagai <code>index.html</code> di root repositori.</li>
+              <li>• Push ke branch <code>main</code> atau <code>gh-pages</code>.</li>
+              <li>• Aktifkan GitHub Pages di settings &gt; Pages.</li>
+              <li>• Pastikan semua tautan file bersifat relatif.</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <script>
+      const modules = [
+        {
+          id: 'pertemuan-01',
+          slug: 'pertemuan-01-fondasi-html',
+          number: '01',
+          title: 'Fondasi HTML',
+          summary:
+            'Memahami kerangka dasar HTML5, struktur semantik, dan praktik terbaik untuk membangun halaman pertama yang kuat.',
+          status: 'published',
+          tags: ['HTML', 'Fundamental'],
+          lessons: [
+            { title: 'Struktur Dasar HTML', file: '01-struktur-dasar.html' },
+            { title: 'Heading & Hirarki Informasi', file: '02-heading.html' },
+            { title: 'Paragraf & Teks', file: '03-paragraf.html' },
+            { title: 'Hyperlink', file: '04-link.html' },
+            { title: 'Gambar & Media', file: '05-gambar.html' },
+            { title: 'List & Struktur Data', file: '06-list.html' },
+            { title: 'Layout dengan Div & Container', file: '07-div-container.html' },
+            { title: 'Studi Kasus: Profil Mahasiswa', file: 'studi-kasus-profile.html' },
+          ],
+        },
+        {
+          id: 'pertemuan-02',
+          slug: 'pertemuan-02-fondasi-css',
+          number: '02',
+          title: 'Fondasi CSS',
+          summary:
+            'Memberi gaya pada struktur HTML dengan memahami selector, warna, tipografi, dan konsep box model.',
+          status: 'published',
+          tags: ['CSS', 'Styling'],
+          lessons: [
+            { title: 'CSS Eksternal', file: '01-css-eksternal.html' },
+            { title: 'Selector & Specificity', file: '02-selector.html' },
+            { title: 'Properti Teks', file: '03-properti-text.html' },
+            { title: 'Warna & Background', file: '04-warna-background.html' },
+            { title: 'Box Model', file: '05-box-model.html' },
+            { title: 'Layout Dasar', file: '06-layout-dasar.html' },
+            { title: 'Studi Kasus: Profil Styled', file: 'studi-kasus-profile-styled.html' },
+          ],
+        },
+        {
+          id: 'pertemuan-03',
+          slug: 'pertemuan-03-bootstrap-grid',
+          number: '03',
+          title: 'Bootstrap Grid & Komponen',
+          summary:
+            'Menerapkan framework Bootstrap untuk layout responsif dan komponen antarmuka siap pakai.',
+          status: 'published',
+          tags: ['Bootstrap', 'Layout'],
+          lessons: [
+            { title: 'Setup Bootstrap via CDN', file: '01-bootstrap-cdn.html' },
+            { title: 'Mengenal Grid System', file: '02-grid-system.html' },
+            { title: 'Komponen Bootstrap', file: '03-bootstrap-components.html' },
+            { title: 'Utilities & Helper Classes', file: '04-bootstrap-utilities.html' },
+            { title: 'Studi Kasus: Landing Page', file: 'studi-kasus-bootstrap.html' },
+          ],
+        },
+        {
+          id: 'pertemuan-04',
+          slug: 'pertemuan-04-javascript-dom',
+          number: '04',
+          title: 'JavaScript & DOM',
+          summary:
+            'Berkenalan dengan JavaScript dan memanipulasi Document Object Model untuk interaktivitas dasar.',
+          status: 'published',
+          tags: ['JavaScript', 'DOM'],
+          lessons: [
+            { title: 'Pengenalan JavaScript', file: '01-pengenalan-javascript.html' },
+            { title: 'Manipulasi DOM', file: '02-dom-manipulation.html' },
+          ],
+        },
+        {
+          id: 'pertemuan-05',
+          slug: 'pertemuan-05-javascript-events',
+          number: '05',
+          title: 'JavaScript Events',
+          summary:
+            'Mengelola interaksi pengguna dengan event listener dan membangun kalkulator interaktif.',
+          status: 'published',
+          tags: ['JavaScript', 'Events'],
+          lessons: [
+            { title: 'Dasar Event Handling', file: '01-event-handling.html' },
+            { title: 'Studi Kasus: Kalkulator Interaktif', file: '02-interactive-calculator.html' },
+          ],
+        },
+        {
+          id: 'pertemuan-06',
+          slug: 'pertemuan-06-javascript-data',
+          number: '06',
+          title: 'Data & State Management',
+          summary:
+            'Menyimpan data di browser dan membangun aplikasi to-do list sederhana.',
+          status: 'published',
+          tags: ['JavaScript', 'Data'],
+          lessons: [
+            { title: 'Penyimpanan Data di Browser', file: '01-data-storage.html' },
+            { title: 'Studi Kasus: To-do App', file: '02-todo-app.html' },
+          ],
+        },
+        {
+          id: 'pertemuan-07',
+          slug: 'pertemuan-07-javascript-async',
+          number: '07',
+          title: 'JavaScript Asynchronous',
+          summary:
+            'Memahami konsep asynchronous JavaScript dengan callback, promise, dan async/await.',
+          status: 'published',
+          tags: ['JavaScript', 'Async'],
+          lessons: [{ title: 'Async Programming', file: '01-async-programming.html' }],
+        },
+        {
+          id: 'pertemuan-08',
+          slug: 'pertemuan-08-js-async-api',
+          number: '08',
+          title: 'Async API Integration',
+          summary:
+            'Integrasi dengan API eksternal menggunakan fetch dan penanganan data asynchronous lanjutan.',
+          status: 'upcoming',
+          tags: ['JavaScript', 'API', 'Async'],
+          lessons: [],
+        },
+        {
+          id: 'pertemuan-09',
+          slug: 'pertemuan-09-php-dasar',
+          number: '09',
+          title: 'PHP Dasar',
+          summary:
+            'Memulai backend development dengan sintaks dasar PHP dan konsep pemrograman server-side.',
+          status: 'upcoming',
+          tags: ['PHP', 'Backend'],
+          lessons: [],
+        },
+        {
+          id: 'pertemuan-10',
+          slug: 'pertemuan-10-php-mysql',
+          number: '10',
+          title: 'PHP & MySQL',
+          summary:
+            'Menghubungkan PHP dengan database MySQL dan melakukan operasi CRUD dasar.',
+          status: 'upcoming',
+          tags: ['PHP', 'Database'],
+          lessons: [],
+        },
+        {
+          id: 'pertemuan-11',
+          slug: 'pertemuan-11-crud-intensif',
+          number: '11',
+          title: 'CRUD Intensif',
+          summary:
+            'Membangun aplikasi CRUD lengkap dengan validasi dan struktur folder yang rapi.',
+          status: 'upcoming',
+          tags: ['PHP', 'CRUD'],
+          lessons: [],
+        },
+        {
+          id: 'pertemuan-12',
+          slug: 'pertemuan-12-php-session',
+          number: '12',
+          title: 'Session Management',
+          summary:
+            'Mengelola sesi pengguna, autentikasi login, dan keamanan dasar pada aplikasi PHP.',
+          status: 'upcoming',
+          tags: ['PHP', 'Session'],
+          lessons: [],
+        },
+        {
+          id: 'pertemuan-13',
+          slug: 'pertemuan-13-ajax-integration',
+          number: '13',
+          title: 'AJAX Integration',
+          summary:
+            'Menggabungkan AJAX dengan PHP untuk membuat pengalaman pengguna yang dinamis.',
+          status: 'upcoming',
+          tags: ['AJAX', 'Integration'],
+          lessons: [],
+        },
+        {
+          id: 'pertemuan-14',
+          slug: 'pertemuan-14-finalisasi',
+          number: '14',
+          title: 'Finalisasi & Deployment',
+          summary:
+            'Menyatukan seluruh materi menjadi proyek akhir dan men-deploy menggunakan GitHub Pages.',
+          status: 'upcoming',
+          tags: ['Final Project'],
+          lessons: [],
+        },
+      ];
+
+  const moduleContainer = document.querySelector('[data-modules]');
+  const sidebarContainer = document.querySelector('[data-sidebar]');
+  const searchInput = document.querySelector('[data-search]');
+  const tagContainer = document.querySelector('[data-tags]');
+  const emptyState = document.querySelector('[data-empty]');
+  const statTotal = document.querySelector('[data-stat-total]');
+  const statLessons = document.querySelector('[data-stat-lessons]');
+  const statComplete = document.querySelector('[data-stat-complete]');
+  const sidebarCount = document.querySelector('[data-sidebar-count]');
+
+      let activeTag = 'Semua';
+      let observers = [];
+
+      sidebarContainer.addEventListener('click', (event) => {
+        const targetLink = event.target.closest('[data-module-link]');
+        if (!targetLink) return;
+        document.querySelectorAll('[data-module-link]').forEach((navLink) => {
+          navLink.classList.remove('border-primary/60', 'bg-primary/15');
+        });
+        targetLink.classList.add('border-primary/60', 'bg-primary/15');
+      });
+
+      function formatStatus(status) {
+        if (status === 'published') {
+          return {
+            label: 'Selesai',
+            class: 'bg-emerald-400/15 text-emerald-300 border-emerald-400/40',
+          };
+        }
+        if (status === 'draft') {
+          return {
+            label: 'Dalam revisi',
+            class: 'bg-amber-400/10 text-amber-300 border-amber-200/40',
+          };
+        }
+        return {
+          label: 'Segera hadir',
+          class: 'bg-slate-400/10 text-slate-300 border-slate-200/30',
+        };
+      }
+
+      function buildLessonLink(module, lesson) {
+        return `${module.slug}/${lesson.file}`;
+      }
+
+      function renderModules(data) {
+        moduleContainer.innerHTML = '';
+
+        data.forEach((module) => {
+          const { label, class: statusClass } = formatStatus(module.status);
+          const section = document.createElement('section');
+          section.id = module.id;
+          section.className = 'group rounded-3xl border border-white/10 bg-white/5 p-7 shadow-xl shadow-slate-900/20 transition hover:border-primary/40 hover:-translate-y-1 hover:bg-white/10';
+
+          const lessonItems = module.lessons
+            .map(
+              (lesson) => `
+                <li class="flex items-start gap-3 rounded-2xl border border-white/5 bg-slate-900/80 px-4 py-3 text-sm transition hover:border-primary/40 hover:bg-slate-900/60">
+                  <span class="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-primary/10 font-semibold text-primary">${module.number}</span>
+                  <div class="flex flex-col gap-1">
+                    <a href="${buildLessonLink(module, lesson)}" class="font-semibold text-slate-100 transition hover:text-primary" target="_blank" rel="noreferrer">
+                      ${lesson.title}
+                    </a>
+                    <p class="text-xs text-slate-400">${lesson.file}</p>
+                  </div>
+                </li>
+              `
+            )
+            .join('');
+
+          section.innerHTML = `
+            <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p class="text-xs uppercase tracking-[0.3em] text-primary/70">Modul ${module.number}</p>
+                <h2 class="mt-1 text-2xl font-semibold text-white">${module.title}</h2>
+              </div>
+              <span class="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-widest ${statusClass}">
+                <span class="h-2 w-2 rounded-full bg-current"></span>
+                ${label}
+              </span>
+            </div>
+            <p class="mb-6 max-w-3xl text-sm text-slate-300">${module.summary}</p>
+            <div class="mb-6 flex flex-wrap gap-2">
+              ${module.tags
+                .map(
+                  (tag) => `<span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-widest text-slate-300">${tag}</span>`
+                )
+                .join('')}
+            </div>
+            <div>
+              <p class="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Materi</p>
+              ${module.lessons.length
+                ? `<ul class="grid gap-3 sm:grid-cols-2">${lessonItems}</ul>`
+                : `<div class="rounded-2xl border border-dashed border-white/15 bg-slate-900/60 p-6 text-sm text-slate-400">Materi sedang disiapkan. Nantikan update berikutnya.</div>`}
+            </div>
+          `;
+
+          moduleContainer.appendChild(section);
+        });
+      }
+
+      function renderSidebar(modulesForSidebar) {
+        sidebarContainer.innerHTML = '';
+        modulesForSidebar.forEach((module) => {
+          const { label } = formatStatus(module.status);
+          const link = document.createElement('a');
+          link.href = `#${module.id}`;
+          link.className = 'group flex flex-col gap-1 rounded-2xl border border-transparent px-4 py-3 transition hover:border-primary/40 hover:bg-primary/10';
+          link.dataset.moduleLink = module.id;
+          link.innerHTML = `
+            <span class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 group-hover:text-primary">Modul ${module.number}</span>
+            <span class="text-sm font-semibold text-white group-hover:text-primary">${module.title}</span>
+            <span class="text-[0.65rem] uppercase tracking-[0.4em] text-slate-500">${label}</span>
+          `;
+          sidebarContainer.appendChild(link);
+        });
+        sidebarCount.textContent = modulesForSidebar.length;
+      }
+
+      function getAllTags() {
+        const tags = new Set();
+        modules.forEach((module) => module.tags.forEach((tag) => tags.add(tag)));
+        return ['Semua', ...Array.from(tags).sort((a, b) => a.localeCompare(b))];
+      }
+
+      function renderTags() {
+        const tags = getAllTags();
+        tagContainer.innerHTML = '';
+        tags.forEach((tag) => {
+          const button = document.createElement('button');
+          const isActive = activeTag === tag;
+          button.type = 'button';
+          button.textContent = tag;
+          button.className = `rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-widest transition ${
+            isActive
+              ? 'border-primary bg-primary/20 text-primary shadow-lg shadow-primary/20'
+              : 'border-white/10 bg-white/5 text-slate-300 hover:border-primary/40 hover:text-primary'
+          }`;
+          button.addEventListener('click', () => {
+            activeTag = tag;
+            renderTags();
+            renderAll();
+          });
+          tagContainer.appendChild(button);
+        });
+      }
+
+      function filterModules() {
+        const query = searchInput.value.trim().toLowerCase();
+        return modules.filter((module) => {
+          const matchesTag = activeTag === 'Semua' || module.tags.includes(activeTag);
+          if (!matchesTag) return false;
+
+          if (!query) return true;
+
+          const mergeText = [module.title, module.summary, module.tags.join(' ')]
+            .concat(module.lessons.map((lesson) => `${lesson.title} ${lesson.file}`))
+            .join(' ')
+            .toLowerCase();
+          return mergeText.includes(query);
+        });
+      }
+
+      function updateStats(filteredModules) {
+        const totalLessons = filteredModules.reduce((sum, mod) => sum + mod.lessons.length, 0);
+        const completedCount = filteredModules.filter((mod) => mod.status === 'published').length;
+        statLessons.textContent = `${totalLessons} materi`; // add label for clarity
+        statComplete.textContent = `${completedCount} selesai`;
+      }
+
+      function toggleEmptyState(filteredModules) {
+        const isEmpty = filteredModules.length === 0;
+        emptyState.classList.toggle('hidden', !isEmpty);
+      }
+
+      function initObservers() {
+        observers.forEach((observer) => observer.disconnect());
+        observers = [];
+
+        const links = document.querySelectorAll('[data-module-link]');
+        const options = {
+          rootMargin: '0px 0px -70% 0px',
+          threshold: [0, 0.1, 0.9, 1],
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const link = document.querySelector(`[data-module-link="${entry.target.id}"]`);
+            if (!link) return;
+            if (entry.isIntersecting) {
+              links.forEach((navLink) => {
+                navLink.classList.remove('border-primary/60', 'bg-primary/15');
+              });
+              link.classList.add('border-primary/60', 'bg-primary/15');
+            }
+          });
+        }, options);
+
+        document.querySelectorAll('[data-modules] > section').forEach((section) => {
+          observer.observe(section);
+        });
+
+        observers.push(observer);
+      }
+
+      function renderAll() {
+        const filtered = filterModules();
+        renderModules(filtered);
+        renderSidebar(filtered);
+        toggleEmptyState(filtered);
+        updateStats(filtered);
+        initObservers();
+      }
+
+      function init() {
+        statTotal.textContent = modules.length;
+        renderTags();
+        renderAll();
+
+        searchInput.addEventListener('input', () => {
+          renderAll();
+        });
+      }
+
+      init();
+    </script>
+  </body>
+</html>
