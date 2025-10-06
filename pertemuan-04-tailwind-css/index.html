@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pertemuan 4: Tailwind CSS</title>
+    <script src="../back-button.js" defer></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Heroicons for icons -->
+    <script src="https://unpkg.com/@heroicons/react@2.0.16/24/outline/index.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+  <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <div class="max-w-4xl mx-auto p-6">
+      <header class="text-center mb-12">
+        <h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4">
+          Pertemuan 4: Tailwind CSS
+        </h1>
+        <p class="text-xl text-gray-600">
+          Framework CSS Utility-First untuk Pengembangan Web Modern
+        </p>
+      </header>
+
+      <!-- Overview Section -->
+      <section class="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+          <i class="fas fa-palette text-blue-500 mr-3"></i>
+          Tentang Tailwind CSS
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-xl font-semibold text-blue-600 mb-3">Apa itu Tailwind CSS?</h3>
+            <p class="text-gray-700 mb-4">
+              Tailwind CSS adalah framework CSS utility-first yang memungkinkan kita membangun 
+              desain yang indah dan responsif dengan cepat menggunakan kelas-kelas utilitas.
+            </p>
+            <ul class="list-disc list-inside text-gray-600 space-y-1">
+              <li>Utility-first approach</li>
+              <li>Responsive design built-in</li>
+              <li>Highly customizable</li>
+              <li>Modern CSS features</li>
+            </ul>
+          </div>
+          <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-purple-600 mb-3">Keunggulan</h3>
+            <div class="space-y-3">
+              <div class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                <span class="text-gray-700">Pengembangan lebih cepat</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                <span class="text-gray-700">CSS yang lebih kecil</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                <span class="text-gray-700">Konsistensi desain</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                <span class="text-gray-700">Mudah dimaintain</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Learning Materials -->
+      <section class="mb-8">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center">
+          <i class="fas fa-book text-blue-500 mr-3"></i>
+          Materi Pembelajaran
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Card 1: Pengenalan -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6">
+              <h3 class="text-2xl font-bold mb-2">1. Pengenalan Tailwind CSS</h3>
+              <p class="text-blue-100">
+                Konsep dasar, utility classes, dan responsive design
+              </p>
+            </div>
+            <div class="p-6">
+              <ul class="space-y-2 text-gray-600 mb-6">
+                <li class="flex items-center">
+                  <i class="fas fa-cog text-blue-500 mr-2"></i>
+                  Setup dan instalasi
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-code text-blue-500 mr-2"></i>
+                  Utility classes dasar
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-paint-brush text-blue-500 mr-2"></i>
+                  Color system dan typography
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-mobile-alt text-blue-500 mr-2"></i>
+                  Responsive design
+                </li>
+              </ul>
+              <a href="01-pengenalan-tailwind.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white text-center py-3 px-4 rounded-lg font-semibold transition-colors">
+                Mulai Belajar →
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 2: Komponen -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="bg-gradient-to-r from-purple-500 to-purple-600 text-white p-6">
+              <h3 class="text-2xl font-bold mb-2">2. Komponen & Layout</h3>
+              <p class="text-purple-100">
+                Membangun komponen UI dan layout yang kompleks
+              </p>
+            </div>
+            <div class="p-6">
+              <ul class="space-y-2 text-gray-600 mb-6">
+                <li class="flex items-center">
+                  <i class="fas fa-id-card text-purple-500 mr-2"></i>
+                  Card components
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-bars text-purple-500 mr-2"></i>
+                  Navigation & forms
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-mouse-pointer text-purple-500 mr-2"></i>
+                  Interactive components
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-th-large text-purple-500 mr-2"></i>
+                  Advanced layouts
+                </li>
+              </ul>
+              <a href="02-tailwind-components.html" class="block w-full bg-purple-500 hover:bg-purple-600 text-white text-center py-3 px-4 rounded-lg font-semibold transition-colors">
+                Praktik Komponen →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Examples -->
+      <section class="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+          <i class="fas fa-bolt text-yellow-500 mr-3"></i>
+          Quick Examples
+        </h2>
+        
+        <div class="space-y-6">
+          <!-- Example 1: Button -->
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Button Styling</h3>
+            <div class="flex flex-wrap gap-3 mb-3">
+              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Primary
+              </button>
+              <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
+                Success
+              </button>
+              <button class="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded">
+                Outline
+              </button>
+            </div>
+            <div class="bg-gray-100 p-3 rounded text-sm">
+              <code class="text-gray-700">
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              </code>
+            </div>
+          </div>
+
+          <!-- Example 2: Card -->
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Simple Card</h3>
+            <div class="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow-md">
+              <div class="p-5">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Card Title</h5>
+                <p class="mb-3 font-normal text-gray-700">Some quick example text to build on the card title.</p>
+                <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800">
+                  Read more
+                </a>
+              </div>
+            </div>
+            <div class="bg-gray-100 p-3 rounded text-sm mt-3">
+              <code class="text-gray-700">
+                class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md"
+              </code>
+            </div>
+          </div>
+
+          <!-- Example 3: Responsive Grid -->
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Responsive Grid</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-3">
+              <div class="bg-blue-100 p-4 rounded text-center">Item 1</div>
+              <div class="bg-green-100 p-4 rounded text-center">Item 2</div>
+              <div class="bg-purple-100 p-4 rounded text-center">Item 3</div>
+            </div>
+            <div class="bg-gray-100 p-3 rounded text-sm">
+              <code class="text-gray-700">
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resources -->
+      <section class="bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-lg p-8 mb-8">
+        <h2 class="text-3xl font-bold mb-6 flex items-center">
+          <i class="fas fa-external-link-alt text-blue-400 mr-3"></i>
+          Resources
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-xl font-semibold mb-3">Official Documentation</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="https://tailwindcss.com/docs" target="_blank" class="text-blue-300 hover:text-blue-200 transition-colors">
+                  Tailwind CSS Documentation
+                </a>
+              </li>
+              <li>
+                <a href="https://tailwindui.com/" target="_blank" class="text-blue-300 hover:text-blue-200 transition-colors">
+                  Tailwind UI Components
+                </a>
+              </li>
+              <li>
+                <a href="https://headlessui.dev/" target="_blank" class="text-blue-300 hover:text-blue-200 transition-colors">
+                  Headless UI Components
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-3">Tools & Utilities</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="https://tailwindcss.com/docs/installation/play-cdn" target="_blank" class="text-green-300 hover:text-green-200 transition-colors">
+                  Tailwind Play (Online Editor)
+                </a>
+              </li>
+              <li>
+                <a href="https://tailwindcss.com/docs/editor-setup" target="_blank" class="text-green-300 hover:text-green-200 transition-colors">
+                  Editor Setup & Extensions
+                </a>
+              </li>
+              <li>
+                <a href="https://tailwindcss.com/docs/configuration" target="_blank" class="text-green-300 hover:text-green-200 transition-colors">
+                  Configuration Guide
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Navigation -->
+      <div class="flex justify-between items-center bg-white rounded-lg shadow-md p-4">
+        <button onclick="history.back()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+          ← Kembali ke Menu Utama
+        </button>
+        <a href="README.md" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center">
+          <i class="fas fa-book-open mr-2"></i>
+          Baca Dokumentasi
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

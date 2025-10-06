@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Komponen Tailwind CSS</title>
+    <script src="../back-button.js" defer></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-in-out',
+              'slide-up': 'slideUp 0.3s ease-out',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(10px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <div class="max-w-6xl mx-auto p-6">
+      <header class="text-center mb-12">
+        <h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4">
+          Komponen Tailwind CSS
+        </h1>
+        <p class="text-xl text-gray-600">
+          Membangun komponen UI yang indah dengan utility classes
+        </p>
+      </header>
+
+      <div class="bg-white/80 backdrop-blur rounded-2xl shadow-lg border border-blue-100 p-8 mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="md:col-span-2 text-left space-y-4">
+            <p class="text-gray-600 leading-relaxed">
+              File ini mengumpulkan contoh komponen Tailwind CSS yang sering dipakai dalam proyek web modern.
+              Setiap komponen dilengkapi penjelasan, potongan kode, dan tips implementasi agar Anda memahami <em>utility-first workflow</em>
+              secara praktis.
+            </p>
+            <p class="text-gray-600 leading-relaxed">
+              Pendekatan yang akan kita gunakan mengikuti siklus <strong>copy → pahami → modifikasi</strong>. Salin kode contoh, pahami
+              struktur dan utility class yang dipakai, lalu modifikasi sesuai kebutuhan aplikasi Anda.
+            </p>
+          </div>
+          <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-100">
+            <h3 class="text-lg font-semibold text-blue-700 mb-4 flex items-center">
+              <i class="fas fa-bullseye text-blue-500 mr-2"></i>
+              Learning Goals
+            </h3>
+            <ul class="text-sm text-gray-600 space-y-2">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mr-2 mt-0.5"></i>
+                Memahami struktur Tailwind untuk berbagai komponen
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mr-2 mt-0.5"></i>
+                Menerapkan kombinasi utility class secara efektif & konsisten
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mr-2 mt-0.5"></i>
+                Mempraktikkan best practice Tailwind pada layout responsive
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 1: Card Components -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center flex items-center justify-center">
+          <i class="fas fa-id-card text-blue-500 mr-3"></i>
+          1. Card Components
+        </h2>
+
+        <div class="bg-white rounded-2xl shadow-md border border-blue-100 p-6 mb-8">
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Komponen kartu memudahkan kita menampilkan potongan informasi secara terstruktur: gambar, judul, metadata,
+            dan aksi. Tailwind menyediakan utility untuk spacing, bayangan, tipografi, serta efek hover sehingga kartu terasa interaktif
+            tanpa perlu menulis CSS manual.
+          </p>
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
+            <li class="flex items-start bg-blue-50 border border-blue-100 rounded-lg p-4">
+              <i class="fas fa-layer-group text-blue-500 mr-3 mt-0.5"></i>
+              Gunakan <code>rounded</code>, <code>shadow</code>, dan <code>overflow-hidden</code> untuk membentuk kartu yang rapi.
+            </li>
+            <li class="flex items-start bg-blue-50 border border-blue-100 rounded-lg p-4">
+              <i class="fas fa-arrows-alt-v text-blue-500 mr-3 mt-0.5"></i>
+              Kelompokkan konten utama di dalam container <code>p-6</code> agar jarak antar elemen konsisten.
+            </li>
+            <li class="flex items-start bg-blue-50 border border-blue-100 rounded-lg p-4">
+              <i class="fas fa-mouse-pointer text-blue-500 mr-3 mt-0.5"></i>
+              Tambahkan <code>hover:shadow-xl</code> atau <code>transition</code> untuk memberikan feedback interaksi.
+            </li>
+            <li class="flex items-start bg-blue-50 border border-blue-100 rounded-lg p-4">
+              <i class="fas fa-mobile-alt text-blue-500 mr-3 mt-0.5"></i>
+              Pastikan gambar memakai <code>object-cover</code> agar proporsi tetap bagus di berbagai ukuran kartu.
+            </li>
+          </ul>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Basic Card -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <img src="https://via.placeholder.com/400x200/4F46E5/FFFFFF?text=Card+Image" alt="Card Image" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">Basic Card</h3>
+              <p class="text-gray-600 mb-4">
+                Card sederhana dengan gambar, judul, dan deskripsi.
+              </p>
+              <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-colors">
+                Read More
+              </button>
+            </div>
+          </div>
+
+          <!-- Profile Card -->
+          <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+            <img src="https://via.placeholder.com/80x80/10B981/FFFFFF?text=Profile" alt="Profile" class="w-20 h-20 rounded-full mx-auto mb-4">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">John Doe</h3>
+            <p class="text-gray-600 mb-4">Frontend Developer</p>
+            <div class="flex justify-center space-x-3">
+              <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-full text-sm transition-colors">
+                Follow
+              </button>
+              <button class="border border-gray-300 hover:bg-gray-50 text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                Message
+              </button>
+            </div>
+          </div>
+
+          <!-- Pricing Card -->
+          <div class="bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg shadow-lg p-6 text-white text-center hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-2xl font-bold mb-2">Pro Plan</h3>
+            <div class="text-4xl font-bold mb-4">
+              $29<span class="text-lg font-normal">/month</span>
+            </div>
+            <ul class="space-y-2 mb-6">
+              <li>✓ Unlimited Projects</li>
+              <li>✓ 24/7 Support</li>
+              <li>✓ Advanced Analytics</li>
+            </ul>
+            <button class="bg-white text-purple-600 font-semibold px-6 py-3 rounded-lg w-full hover:bg-gray-100 transition-colors">
+              Choose Plan
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+          <h4 class="text-lg font-semibold mb-4">Code Example - Basic Card:</h4>
+          <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto"><code>&lt;div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"&gt;
+  &lt;img src="image.jpg" alt="Card Image" class="w-full h-48 object-cover"&gt;
+  &lt;div class="p-6"&gt;
+    &lt;h3 class="text-xl font-semibold text-gray-800 mb-2"&gt;Card Title&lt;/h3&gt;
+    &lt;p class="text-gray-600 mb-4"&gt;Card description...&lt;/p&gt;
+    &lt;button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"&gt;
+      Read More
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- Section 2: Navigation Components -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center flex items-center justify-center">
+          <i class="fas fa-bars text-green-500 mr-3"></i>
+          2. Navigation Components
+        </h2>
+
+        <div class="bg-white rounded-2xl shadow-md border border-green-100 p-6 mb-8">
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Navigasi adalah anchor utama pengalaman pengguna. Dengan Tailwind kita bisa mengatur alignment, spacing,
+            dan state (aktif/hover) secara eksplisit sehingga menu mudah dibaca dan responsif. Gabungkan utility seperti
+            <code>flex</code>, <code>justify-between</code>, dan <code>space-x-*</code> untuk mengontrol layout horizontal.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
+            <div class="bg-green-50 border border-green-100 rounded-lg p-4 flex items-start">
+              <i class="fas fa-desktop text-green-500 mr-3 mt-0.5"></i>
+              Gunakan breakpoint <code>md:</code> untuk menampilkan menu desktop dan sembunyikan pada mobile dengan <code>hidden md:block</code>.
+            </div>
+            <div class="bg-green-50 border border-green-100 rounded-lg p-4 flex items-start">
+              <i class="fas fa-ellipsis-h text-green-500 mr-3 mt-0.5"></i>
+              Pastikan tombol hamburger mobile memiliki area klik besar dan ikon jelas.
+            </div>
+            <div class="bg-green-50 border border-green-100 rounded-lg p-4 flex items-start">
+              <i class="fas fa-route text-green-500 mr-3 mt-0.5"></i>
+              Breadcrumb membantu orientasi pengguna. Gunakan <code>inline-flex</code> dan ikon separator untuk menegaskan hierarchy.
+            </div>
+            <div class="bg-green-50 border border-green-100 rounded-lg p-4 flex items-start">
+              <i class="fas fa-universal-access text-green-500 mr-3 mt-0.5"></i>
+              Sertakan atribut <code>aria-label</code> agar navigasi mudah diakses pengguna screen reader.
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Navigation -->
+        <div class="mb-8">
+          <h3 class="text-xl font-semibold mb-4">Top Navigation Bar</h3>
+          <nav class="bg-white shadow-lg rounded-lg">
+            <div class="max-w-7xl mx-auto px-4">
+              <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                  <div class="text-xl font-bold text-blue-600">Logo</div>
+                </div>
+                <div class="hidden md:block">
+                  <div class="ml-10 flex items-baseline space-x-4">
+                    <a href="#" class="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Services</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                  </div>
+                </div>
+                <div class="md:hidden">
+                  <button class="text-gray-700 hover:text-blue-600">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <!-- Breadcrumb -->
+        <div class="mb-8">
+          <h3 class="text-xl font-semibold mb-4">Breadcrumb Navigation</h3>
+          <nav class="flex bg-white rounded-lg shadow px-5 py-3" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+              <li class="inline-flex items-center">
+                <a href="#" class="text-gray-700 hover:text-blue-600 inline-flex items-center">
+                  <svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+                  </svg>
+                  Home
+                </a>
+              </li>
+              <li>
+                <div class="flex items-center">
+                  <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <a href="#" class="ml-1 text-gray-700 hover:text-blue-600 md:ml-2">Projects</a>
+                </div>
+              </li>
+              <li>
+                <div class="flex items-center">
+                  <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="ml-1 text-blue-600 md:ml-2 font-medium">Tailwind CSS</span>
+                </div>
+              </li>
+            </ol>
+          </nav>
+        </div>
+
+        <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+          <h4 class="text-lg font-semibold mb-4">Code Example - Top Navigation + Breadcrumb:</h4>
+          <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto"><code>&lt;nav class="bg-white shadow-lg"&gt;
+  &lt;div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16"&gt;
+    &lt;span class="text-xl font-bold text-blue-600"&gt;Logo&lt;/span&gt;
+    &lt;div class="hidden md:flex space-x-4"&gt;
+      &lt;a class="text-blue-600 hover:text-blue-800" href="#"&gt;Home&lt;/a&gt;
+      &lt;a class="text-gray-700 hover:text-blue-600" href="#"&gt;About&lt;/a&gt;
+      &lt;a class="text-gray-700 hover:text-blue-600" href="#"&gt;Services&lt;/a&gt;
+      &lt;a class="text-gray-700 hover:text-blue-600" href="#"&gt;Contact&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;button class="md:hidden text-gray-700 hover:text-blue-600"&gt;
+      &lt;i class="fas fa-bars"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;nav class="flex bg-white rounded-lg shadow px-5 py-3" aria-label="Breadcrumb"&gt;
+  &lt;ol class="inline-flex items-center space-x-2 text-sm"&gt;
+    &lt;li&gt;&lt;a class="text-gray-700 hover:text-blue-600" href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="flex items-center text-gray-400"&gt;
+      &lt;i class="fas fa-chevron-right mx-2"&gt;&lt;/i&gt;
+      &lt;a class="text-gray-700 hover:text-blue-600" href="#"&gt;Projects&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="flex items-center text-blue-600 font-semibold"&gt;
+      &lt;i class="fas fa-chevron-right mx-2"&gt;&lt;/i&gt;
+      Detail
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- Section 3: Form Components -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center flex items-center justify-center">
+          <i class="fas fa-wpforms text-purple-500 mr-3"></i>
+          3. Form Components
+        </h2>
+
+        <div class="bg-white rounded-2xl shadow-md border border-purple-100 p-6 mb-8">
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Formulir membutuhkan perhatian ekstra pada aksesibilitas dan konsistensi spacing. Tailwind memudahkan kita menjaga
+            jarak, warna fokus, serta tipografi label sehingga form terasa nyaman digunakan di perangkat apa pun.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
+            <div class="bg-purple-50 border border-purple-100 rounded-lg p-4 flex items-start">
+              <i class="fas fa-signature text-purple-500 mr-3 mt-0.5"></i>
+              Selalu padukan <code>label</code> dan <code>input</code> agar form ramah aksesibilitas.
+            </div>
+            <div class="bg-purple-50 border border-purple-100 rounded-lg p-4 flex items-start">
+              <i class="fas fa-highlighter text-purple-500 mr-3 mt-0.5"></i>
+              Gunakan <code>focus:ring</code> dan <code>focus:border-transparent</code> supaya outline terlihat modern.
+            </div>
+            <div class="bg-purple-50 border border-purple-100 rounded-lg p-4 flex items-start">
+              <i class="fas fa-th-large text-purple-500 mr-3 mt-0.5"></i>
+              Manfaatkan <code>space-y-4</code> untuk merapikan jarak vertikal antar field.
+            </div>
+            <div class="bg-purple-50 border border-purple-100 rounded-lg p-4 flex items-start">
+              <i class="fas fa-mobile text-purple-500 mr-3 mt-0.5"></i>
+              Pastikan tombol submit memiliki lebar penuh (<code>w-full</code>) pada layar kecil.
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Contact Form -->
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-xl font-semibold mb-6">Contact Form</h3>
+            <form class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your name">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="your@email.com">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                  <option>General Inquiry</option>
+                  <option>Support</option>
+                  <option>Business</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                <textarea rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your message..."></textarea>
+              </div>
+              <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition-colors">
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <!-- Login Form -->
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-xl font-semibold mb-6">Login Form</h3>
+            <form class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Enter your email">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                <input type="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Enter your password">
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <input type="checkbox" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
+                  <label class="ml-2 block text-sm text-gray-700">Remember me</label>
+                </div>
+                <a href="#" class="text-sm text-green-600 hover:text-green-500">Forgot password?</a>
+              </div>
+              <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-md transition-colors">
+                Sign In
+              </button>
+              <div class="text-center">
+                <span class="text-sm text-gray-600">Don't have an account? </span>
+                <a href="#" class="text-sm text-green-600 hover:text-green-500 font-medium">Sign up</a>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+          <h4 class="text-lg font-semibold mb-4">Code Example - Responsive Form Pattern:</h4>
+          <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto"><code>&lt;form class="bg-white p-6 rounded-lg shadow space-y-4"&gt;
+  &lt;label class="block text-sm font-medium text-gray-700"&gt;
+    Email
+    &lt;input type="email"
+      class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2
+             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      placeholder="you@example.com" /&gt;
+  &lt;/label&gt;
+  &lt;label class="block text-sm font-medium text-gray-700"&gt;
+    Pesan
+    &lt;textarea rows="4"
+      class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2
+             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      placeholder="Tuliskan kebutuhan Anda"&gt;&lt;/textarea&gt;
+  &lt;/label&gt;
+  &lt;button type="submit"
+    class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md transition-colors"&gt;
+    Kirim
+  &lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- Section 4: Interactive Components -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center flex items-center justify-center">
+          <i class="fas fa-mouse-pointer text-orange-500 mr-3"></i>
+          4. Interactive Components
+        </h2>
+
+        <div class="bg-white rounded-2xl shadow-md border border-orange-100 p-6 mb-8">
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Komponen interaktif seperti modal, tabs, dan alert membutuhkan perpaduan utility Tailwind dan sedikit JavaScript untuk
+            mengontrol state. Gunakan utility transition dan animation agar feedback terasa halus, sedangkan state (aktif/tersembunyi)
+            bisa diatur dengan menambah/menhapus class.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
+            <div class="bg-orange-50 border border-orange-100 rounded-lg p-4 flex items-start">
+              <i class="fas fa-toggle-on text-orange-500 mr-3 mt-0.5"></i>
+              Simpan state UI di JavaScript lalu toggle class Tailwind seperti <code>hidden</code>, <code>flex</code>, atau <code>opacity-0</code>.
+            </div>
+            <div class="bg-orange-50 border border-orange-100 rounded-lg p-4 flex items-start">
+              <i class="fas fa-bolt text-orange-500 mr-3 mt-0.5"></i>
+              Manfaatkan <code>transition</code> dan <code>duration-300</code> untuk animasi masuk/keluar yang natural.
+            </div>
+            <div class="bg-orange-50 border border-orange-100 rounded-lg p-4 flex items-start">
+              <i class="fas fa-eye text-orange-500 mr-3 mt-0.5"></i>
+              Pastikan modal memiliki backdrop (<code>bg-gray-600/50</code>) dan dapat ditutup dengan klik luar atau tombol escape.
+            </div>
+            <div class="bg-orange-50 border border-orange-100 rounded-lg p-4 flex items-start">
+              <i class="fas fa-exclamation-circle text-orange-500 mr-3 mt-0.5"></i>
+              Alert sebaiknya memakai warna kontras dan ikon agar informasi cepat dipahami.
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Modal Demo -->
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-xl font-semibold mb-4">Modal Dialog</h3>
+            <button id="openModal" class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-md transition-colors">
+              Open Modal
+            </button>
+            
+            <!-- Modal -->
+            <div id="modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50">
+              <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 animate-slide-up">
+                <div class="px-6 py-4 border-b">
+                  <h3 class="text-lg font-semibold">Modal Title</h3>
+                </div>
+                <div class="px-6 py-4">
+                  <p class="text-gray-700">This is a modal dialog built with Tailwind CSS. It includes animations and responsive design.</p>
+                </div>
+                <div class="px-6 py-4 border-t flex justify-end space-x-3">
+                  <button id="closeModal" class="bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded-md transition-colors">
+                    Cancel
+                  </button>
+                  <button class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-md transition-colors">
+                    Confirm
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabs Demo -->
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-xl font-semibold mb-4">Tab Component</h3>
+            <div class="tab-container">
+              <div class="flex border-b">
+                <button class="tab-button active px-4 py-2 text-blue-600 border-b-2 border-blue-600 font-medium" data-tab="tab1">
+                  Tab 1
+                </button>
+                <button class="tab-button px-4 py-2 text-gray-500 hover:text-gray-700" data-tab="tab2">
+                  Tab 2
+                </button>
+                <button class="tab-button px-4 py-2 text-gray-500 hover:text-gray-700" data-tab="tab3">
+                  Tab 3
+                </button>
+              </div>
+              <div class="mt-4">
+                <div id="tab1" class="tab-content">
+                  <p class="text-gray-700">Content for Tab 1. This demonstrates how to create tabbed interfaces with Tailwind CSS.</p>
+                </div>
+                <div id="tab2" class="tab-content hidden">
+                  <p class="text-gray-700">Content for Tab 2. Each tab can contain different content and components.</p>
+                </div>
+                <div id="tab3" class="tab-content hidden">
+                  <p class="text-gray-700">Content for Tab 3. Tabs are great for organizing related content in a compact space.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alert Components -->
+        <div class="mt-8 space-y-4">
+          <h3 class="text-xl font-semibold flex items-center">
+            <i class="fas fa-bell mr-2"></i>
+            Alert Components
+          </h3>
+          
+          <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative flex items-center" role="alert">
+            <i class="fas fa-check-circle mr-3 text-lg"></i>
+            <div>
+              <strong class="font-bold">Success!</strong>
+              <span class="block sm:inline"> Your action was completed successfully.</span>
+            </div>
+          </div>
+
+          <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative flex items-center" role="alert">
+            <i class="fas fa-exclamation-triangle mr-3 text-lg"></i>
+            <div>
+              <strong class="font-bold">Warning!</strong>
+              <span class="block sm:inline"> Please check your input before proceeding.</span>
+            </div>
+          </div>
+
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative flex items-center" role="alert">
+            <i class="fas fa-times-circle mr-3 text-lg"></i>
+            <div>
+              <strong class="font-bold">Error!</strong>
+              <span class="block sm:inline"> Something went wrong. Please try again.</span>
+            </div>
+          </div>
+
+          <div class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative flex items-center" role="alert">
+              <i class="fas fa-info-circle mr-3 text-lg"></i>
+            <div>
+              <strong class="font-bold">Info!</strong>
+              <span class="block sm:inline"> Here's some important information for you.</span>
+            </div>
+          </div>
+        <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+          <h4 class="text-lg font-semibold mb-4">Code Example - Modal & Tabs Toggle:</h4>
+          <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto"><code>&lt;!-- Modal Trigger --&gt;
+&lt;button id="openModal" class="bg-purple-500 text-white px-4 py-2 rounded"&gt;Open Modal&lt;/button&gt;
+
+&lt;!-- Modal --&gt;
+&lt;div id="modal" class="fixed inset-0 bg-gray-600/60 hidden items-center justify-center"&gt;
+  &lt;div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 space-y-4"&gt;
+    &lt;h3 class="text-lg font-semibold"&gt;Modal Title&lt;/h3&gt;
+    &lt;p class="text-gray-600"&gt;Konten modal dengan Tailwind.&lt;/p&gt;
+    &lt;div class="flex justify-end space-x-3"&gt;
+      &lt;button id="closeModal" class="bg-gray-200 px-4 py-2 rounded"&gt;Cancel&lt;/button&gt;
+      &lt;button class="bg-purple-500 text-white px-4 py-2 rounded"&gt;Confirm&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  const modal = document.getElementById('modal');
+  document.getElementById('openModal').onclick = () =&gt; {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  };
+  document.getElementById('closeModal').onclick = () =&gt; {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  };
+&lt;/script&gt;
+
+&lt;!-- Tabs --&gt;
+&lt;div class="border-b flex"&gt;
+  &lt;button class="tab-button active px-4 py-2 text-blue-600 border-b-2 border-blue-600" data-tab="tab1"&gt;Tab 1&lt;/button&gt;
+  &lt;button class="tab-button px-4 py-2 text-gray-500" data-tab="tab2"&gt;Tab 2&lt;/button&gt;
+&lt;/div&gt;
+&lt;div id="tab1" class="tab-content py-4"&gt;Konten tab 1&lt;/div&gt;
+&lt;div id="tab2" class="tab-content hidden py-4"&gt;Konten tab 2&lt;/div&gt;
+
+&lt;script&gt;
+  const buttons = document.querySelectorAll('.tab-button');
+  const contents = document.querySelectorAll('.tab-content');
+  buttons.forEach(btn =&gt; btn.addEventListener('click', () =&gt; {
+    buttons.forEach(b =&gt; b.classList.remove('text-blue-600','border-b-2','border-blue-600','active'));
+    contents.forEach(c =&gt; c.classList.add('hidden'));
+    btn.classList.add('text-blue-600','border-b-2','border-blue-600','active');
+    document.getElementById(btn.dataset.tab).classList.remove('hidden');
+  }));
+&lt;/script&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- Section 5: Advanced Layout -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center flex items-center justify-center">
+          <i class="fas fa-th-large text-indigo-500 mr-3"></i>
+          5. Advanced Layout Examples
+        </h2>
+
+        <div class="bg-white rounded-2xl shadow-md border border-indigo-100 p-6 mb-8">
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Layout kompleks seperti dashboard memanfaatkan kombinasi grid dan flex untuk menata kartu statistik, tabel, serta panel
+            aksi. Tailwind mempermudah adaptasi antar breakpoint—kita cukup menambahkan prefix seperti <code>md:</code> atau <code>lg:</code>
+            tanpa menulis media query manual.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
+            <div class="bg-indigo-50 border border-indigo-100 rounded-lg p-4 flex items-start">
+              <i class="fas fa-border-all text-indigo-500 mr-3 mt-0.5"></i>
+              Gunakan <code>grid</code> untuk layout makro (kolom kartu) dan <code>flex</code> untuk menyelaraskan isi tiap kartu.
+            </div>
+            <div class="bg-indigo-50 border border-indigo-100 rounded-lg p-4 flex items-start">
+              <i class="fas fa-expand text-indigo-500 mr-3 mt-0.5"></i>
+              Atur span kolom dengan <code>lg:col-span-2</code> atau <code>xl:col-span-3</code> guna menekankan blok penting.
+            </div>
+            <div class="bg-indigo-50 border border-indigo-100 rounded-lg p-4 flex items-start">
+              <i class="fas fa-sync text-indigo-500 mr-3 mt-0.5"></i>
+              Manfaatkan warna utilitas (<code>bg-blue-500</code>, <code>bg-green-500</code>) sebagai indikator status yang konsisten.
+            </div>
+            <div class="bg-indigo-50 border border-indigo-100 rounded-lg p-4 flex items-start">
+              <i class="fas fa-ruler-combined text-indigo-500 mr-3 mt-0.5"></i>
+              Simpan spacing konsisten dengan <code>p-6</code>/<code>gap-6</code> agar dashboard rapi dan mudah discan.
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Layout -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="bg-gray-50 px-6 py-4 border-b">
+            <h3 class="text-xl font-semibold">Dashboard Layout</h3>
+          </div>
+          <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              <div class="bg-blue-500 text-white p-6 rounded-lg">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-blue-100">Total Users</p>
+                    <p class="text-3xl font-bold">1,234</p>
+                  </div>
+                  <div class="text-blue-200">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="bg-green-500 text-white p-6 rounded-lg">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-green-100">Revenue</p>
+                    <p class="text-3xl font-bold">$12,345</p>
+                  </div>
+                  <div class="text-green-200">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="bg-yellow-500 text-white p-6 rounded-lg">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-yellow-100">Orders</p>
+                    <p class="text-3xl font-bold">567</p>
+                  </div>
+                  <div class="text-yellow-200">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="bg-purple-500 text-white p-6 rounded-lg">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-purple-100">Growth</p>
+                    <p class="text-3xl font-bold">23%</p>
+                  </div>
+                  <div class="text-purple-200">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div class="lg:col-span-2">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                  <h4 class="text-lg font-semibold mb-4">Recent Activity</h4>
+                  <div class="space-y-3">
+                    <div class="flex items-center space-x-3">
+                      <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <span class="text-gray-700">New user registered</span>
+                      <span class="text-gray-500 text-sm ml-auto">2 min ago</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                      <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                      <span class="text-gray-700">Payment received</span>
+                      <span class="text-gray-500 text-sm ml-auto">5 min ago</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                      <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                      <span class="text-gray-700">Order pending</span>
+                      <span class="text-gray-500 text-sm ml-auto">10 min ago</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="bg-gray-50 p-6 rounded-lg">
+                <h4 class="text-lg font-semibold mb-4">Quick Actions</h4>
+                <div class="space-y-2">
+                  <button class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded transition-colors">
+                    Add User
+                  </button>
+                  <button class="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded transition-colors">
+                    Create Order
+                  </button>
+                  <button class="w-full bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded transition-colors">
+                    Generate Report
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+          <h4 class="text-lg font-semibold mb-4">Code Example - Dashboard Skeleton:</h4>
+          <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto"><code>&lt;section class="bg-white rounded-lg shadow overflow-hidden"&gt;
+  &lt;header class="bg-gray-50 px-6 py-4 border-b flex justify-between"&gt;
+    &lt;h3 class="text-xl font-semibold"&gt;Dashboard&lt;/h3&gt;
+    &lt;button class="bg-blue-500 text-white px-4 py-2 rounded"&gt;New Report&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;div class="p-6 space-y-8"&gt;
+    &lt;div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"&gt;
+      &lt;div class="bg-blue-500 text-white p-6 rounded-lg"&gt;Card&lt;/div&gt;
+      &lt;div class="bg-green-500 text-white p-6 rounded-lg"&gt;Card&lt;/div&gt;
+      &lt;div class="bg-yellow-500 text-white p-6 rounded-lg"&gt;Card&lt;/div&gt;
+      &lt;div class="bg-purple-500 text-white p-6 rounded-lg"&gt;Card&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="grid grid-cols-1 lg:grid-cols-3 gap-6"&gt;
+      &lt;div class="lg:col-span-2 bg-gray-50 p-6 rounded-lg"&gt;Chart / Table&lt;/div&gt;
+      &lt;aside class="bg-gray-50 p-6 rounded-lg space-y-3"&gt;
+        &lt;button class="w-full bg-blue-500 text-white py-2 rounded"&gt;Action&lt;/button&gt;
+        &lt;button class="w-full bg-green-500 text-white py-2 rounded"&gt;Action&lt;/button&gt;
+      &lt;/aside&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- Tailwind Best Practices -->
+      <section class="mb-12">
+        <div class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white rounded-3xl shadow-xl p-8">
+          <h2 class="text-3xl font-bold mb-4 flex items-center">
+            <i class="fas fa-lightbulb mr-3"></i>
+            Tailwind CSS Best Practices
+          </h2>
+          <p class="text-blue-50 mb-6 leading-relaxed max-w-3xl">
+            Terapkan tips berikut untuk menjaga konsistensi, maintainability, dan performa ketika menggunakan Tailwind CSS
+            di proyek profesional.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/20">
+              <h3 class="font-semibold text-lg mb-2">1. Utility Grouping</h3>
+              <p class="text-sm text-blue-100">Kelompokkan utilitas mengikuti pola <code>layout → spacing → typography → state</code>
+                agar class order mudah dibaca.</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/20">
+              <h3 class="font-semibold text-lg mb-2">2. Responsive First</h3>
+              <p class="text-sm text-blue-100">Mulai dengan style dasar lalu tambahkan breakpoint (<code>sm:</code>, <code>md:</code>, dll) hanya jika diperlukan.</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/20">
+              <h3 class="font-semibold text-lg mb-2">3. Extract Components</h3>
+              <p class="text-sm text-blue-100">Gunakan <code>@apply</code> atau komponen partial bila kombinasi utility mulai panjang dan berulang.</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/20">
+              <h3 class="font-semibold text-lg mb-2">4. Konsisten dengan Design Token</h3>
+              <p class="text-sm text-blue-100">Tetapkan warna & font pada <code>tailwind.config.js</code> sehingga tim memakai nama token yang sama.</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/20">
+              <h3 class="font-semibold text-lg mb-2">5. Optimasi Produksi</h3>
+              <p class="text-sm text-blue-100">Aktifkan fitur <code>content</code> purge agar bundle CSS tetap ramping saat build production.</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/20">
+              <h3 class="font-semibold text-lg mb-2">6. Dokumentasikan Komponen</h3>
+              <p class="text-sm text-blue-100">Catat penggunaan komponen + variasi states (hover/focus) supaya mudah dipakai ulang oleh tim.</p>
+            </div>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-3 text-sm text-blue-100">
+            <span class="inline-flex items-center bg-white/10 px-3 py-1 rounded-full"><i class="fas fa-book mr-2"></i>Ikuti dokumentasi resmi</span>
+            <span class="inline-flex items-center bg-white/10 px-3 py-1 rounded-full"><i class="fas fa-vials mr-2"></i>Eksperimen di Tailwind Play</span>
+            <span class="inline-flex items-center bg-white/10 px-3 py-1 rounded-full"><i class="fas fa-code mr-2"></i>Gunakan linting (Prettier plugin)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Navigation -->
+      <div class="flex justify-between items-center bg-white rounded-lg shadow-md p-4">
+        <a href="01-pengenalan-tailwind.html" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+          ← Kembali ke Pengenalan
+        </a>
+        <button onclick="history.back()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Kembali ke Menu Utama
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Modal functionality
+      const openModal = document.getElementById('openModal');
+      const closeModal = document.getElementById('closeModal');
+      const modal = document.getElementById('modal');
+
+      openModal.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      });
+
+      closeModal.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      });
+
+      // Close modal on backdrop click
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+      });
+
+      // Tab functionality
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active class from all buttons
+          tabButtons.forEach(btn => {
+            btn.classList.remove('active', 'text-blue-600', 'border-b-2', 'border-blue-600');
+            btn.classList.add('text-gray-500');
+          });
+          
+          // Add active class to clicked button
+          button.classList.add('active', 'text-blue-600', 'border-b-2', 'border-blue-600');
+          button.classList.remove('text-gray-500');
+          
+          // Hide all tab contents
+          tabContents.forEach(content => {
+            content.classList.add('hidden');
+          });
+          
+          // Show target tab content
+          const targetTab = document.getElementById(button.dataset.tab);
+          targetTab.classList.remove('hidden');
+        });
+      });
+
+      // Simple animations on load
+      document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.bg-white');
+        cards.forEach((card, index) => {
+          setTimeout(() => {
+            card.classList.add('animate-fade-in');
+          }, index * 100);
+        });
+      });
+
+      console.log('Tailwind CSS Components berhasil dimuat!');
+    </script>
+  </body>
+</html>
