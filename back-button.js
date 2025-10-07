@@ -6,9 +6,9 @@
   const moduleAnchors = {
     'pertemuan-01-fondasi-html': '#pertemuan-01',
     'pertemuan-02-fondasi-css': '#pertemuan-02',
-    'pertemuan-03-bootstrap-grid': '#pertemuan-03',
-    'pertemuan-04-javascript-dom': '#pertemuan-04',
-    'pertemuan-05-javascript-events': '#pertemuan-05',
+  'pertemuan-03-bootstrap-grid': '#pertemuan-03',
+  'pertemuan-04-tailwind-css': '#pertemuan-04',
+  'pertemuan-05-php-dasar': '#pertemuan-05',
     'pertemuan-06-javascript-data': '#pertemuan-06',
     'pertemuan-07-javascript-async': '#pertemuan-07',
     'pertemuan-08-js-async-api': '#pertemuan-08',
