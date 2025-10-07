@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pertemuan 05 • PHP Dasar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #020617;
+        color: #f8fafc;
+      }
+      a.card:hover {
+        transform: translateY(-4px);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-slate-950">
+    <div class="mx-auto max-w-5xl px-6 py-16">
+      <header class="mb-12 rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-900/70 p-10 shadow-2xl shadow-emerald-900/30">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+          <div class="flex-1">
+            <p class="inline-flex items-center gap-2 rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-emerald-200">
+              Pertemuan 05
+            </p>
+            <h1 class="mt-6 text-4xl font-semibold text-white">PHP Dasar: Server-Side Development</h1>
+            <p class="mt-4 text-slate-300">Memulai backend development dengan sintaks PHP, control flow, serta penanganan form dan sesi.</p>
+          </div>
+          <div class="flex flex-col gap-3 text-sm">
+            <div class="rounded-2xl border border-emerald-400/30 bg-emerald-500/15 px-4 py-2">
+              <span class="text-xs uppercase tracking-[0.3em] text-emerald-300">Durasi</span>
+              <p class="font-semibold text-white">4-6 jam</p>
+            </div>
+            <div class="rounded-2xl border border-blue-400/30 bg-blue-500/15 px-4 py-2">
+              <span class="text-xs uppercase tracking-[0.3em] text-blue-300">Level</span>
+              <p class="font-semibold text-white">Beginner</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-6 lg:grid-cols-2">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h3 class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-400">Prerequisites</h3>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                HTML
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                CSS
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                Basic Programming Logic
+              </li>
+            </ul>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h3 class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-400">Learning Objectives</h3>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              <li class="flex items-start gap-2">
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400"></span>
+                <span>Memahami sintaks dasar PHP dan perbedaannya dengan JavaScript</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400"></span>
+                <span>Mengelola data menggunakan variabel, array, dan struktur kontrol</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400"></span>
+                <span>Membangun form interaktif dengan validasi server-side</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <section class="mb-12 rounded-3xl border border-white/10 bg-slate-900/70 p-8 shadow-xl shadow-slate-900/40">
+        <h2 class="text-2xl font-semibold text-white">Setup Environment</h2>
+        <p class="mt-3 text-sm text-slate-300">Pastikan environment PHP sudah terkonfigurasi sebelum memulai praktikum:</p>
+        <div class="mt-6 grid gap-4 md:grid-cols-2">
+          <div class="rounded-2xl border border-amber-400/30 bg-amber-500/10 p-4">
+            <h3 class="text-sm font-semibold text-amber-200">Opsi 1: Web Server Package</h3>
+            <ul class="mt-3 space-y-2 text-xs text-amber-100">
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-1 w-1 shrink-0 rounded-full bg-amber-300"></span>
+                <span>Install web server (XAMPP/Laragon) atau gunakan PHP built-in server</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-1 w-1 shrink-0 rounded-full bg-amber-300"></span>
+                <span>Letakkan project di direktori yang dapat diakses web server</span>
+              </li>
+            </ul>
+          </div>
+          <div class="rounded-2xl border border-blue-400/30 bg-blue-500/10 p-4">
+            <h3 class="text-sm font-semibold text-blue-200">Opsi 2: Built-in Server</h3>
+            <div class="mt-3 rounded-xl bg-black/50 p-3 text-xs text-blue-100">
+              <code>php -S localhost:8000</code>
+            </div>
+            <p class="mt-2 text-xs text-blue-200">Kemudian buka http://localhost:8000</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <div class="mb-6 text-center">
+          <h2 class="text-2xl font-semibold text-white">Materi Pembelajaran</h2>
+          <p class="mt-2 text-sm text-slate-400">Klik pada setiap kartu untuk memulai pembelajaran</p>
+        </div>
+        
+        <div class="grid gap-6 lg:grid-cols-3">
+          <a
+            href="01-php-dasar.php" 
+            class="card group relative flex flex-col gap-4 rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-xl shadow-slate-900/40 transition hover:border-emerald-400/50 hover:bg-slate-900/90"
+          >
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/20 text-lg font-bold text-emerald-300">
+                1
+              </span>
+              <div>
+                <h2 class="text-lg font-semibold text-white group-hover:text-emerald-300">PHP Dasar & Sintaks</h2>
+                <p class="text-xs text-slate-400">90 menit</p>
+              </div>
+            </div>
+            
+            <p class="text-sm text-slate-300">Memahami variabel, array, fungsi, dan integrasi PHP dengan HTML.</p>
+            
+            <div class="space-y-3">
+              <div>
+                <h4 class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">Konsep Utama</h4>
+                <div class="mt-2 flex flex-wrap gap-1">
+                  <span class="rounded-full bg-slate-800/60 px-2 py-1 text-xs text-slate-300">Variables</span>
+                  <span class="rounded-full bg-slate-800/60 px-2 py-1 text-xs text-slate-300">Arrays</span>
+                  <span class="rounded-full bg-slate-800/60 px-2 py-1 text-xs text-slate-300">Functions</span>
+                  <span class="rounded-full bg-slate-800/60 px-2 py-1 text-xs text-slate-300">Type Hints</span>
+                </div>
+              </div>
+              
+              <div>
+                <h4 class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">Tags</h4>
+                <div class="mt-2 flex flex-wrap gap-2">
+                  <span class="rounded-full border border-emerald-400/40 bg-emerald-500/15 px-2 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-emerald-200">PHP</span>
+                  <span class="rounded-full border border-emerald-400/40 bg-emerald-500/15 px-2 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-emerald-200">Fundamental</span>
+                  <span class="rounded-full border border-emerald-400/40 bg-emerald-500/15 px-2 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-emerald-200">Sintaks</span>
+                </div>
+              </div>
+            </div>
+            
+            <span class="mt-auto text-xs font-semibold uppercase tracking-[0.3em] text-emerald-200">Mulai pembelajaran →</span>
+          </a>
+
+          <a
+            href="02-control-flow.php"
+            class="card group relative flex flex-col gap-4 rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-xl shadow-slate-900/40 transition hover:border-emerald-400/50 hover:bg-slate-900/90"
+          >
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/20 text-lg font-bold text-emerald-300">
+                2
+              </span>
+              <div>
+                <h2 class="text-lg font-semibold text-white group-hover:text-emerald-300">Control Flow & Data Struktur</h2>
+                <p class="text-xs text-slate-400">90 menit</p>
+              </div>
+            </div>
+            
+            <p class="text-sm text-slate-300">Mengelola logika menggunakan kondisional, looping, dan array multidimensi.</p>
+            
+            <div class="space-y-3">
+              <div>
+                <h4 class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">Konsep Utama</h4>
+                <div class="mt-2 flex flex-wrap gap-1">
+                  <span class="rounded-full bg-slate-800/60 px-2 py-1 text-xs text-slate-300">If/Else</span>
+                  <span class="rounded-full bg-slate-800/60 px-2 py-1 text-xs text-slate-300">Loops</span>
+                  <span class="rounded-full bg-slate-800/60 px-2 py-1 text-xs text-slate-300">Multidimensional Arrays</span>
+                  <span class="rounded-full bg-slate-800/60 px-2 py-1 text-xs text-slate-300">Data Processing</span>
+                </div>
+              </div>
+              
+              <div>
+                <h4 class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">Tags</h4>
+                <div class="mt-2 flex flex-wrap gap-2">
+                  <span class="rounded-full border border-emerald-400/40 bg-emerald-500/15 px-2 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-emerald-200">Logic</span>
+                  <span class="rounded-full border border-emerald-400/40 bg-emerald-500/15 px-2 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-emerald-200">Array</span>
+                  <span class="rounded-full border border-emerald-400/40 bg-emerald-500/15 px-2 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-emerald-200">Function</span>
+                </div>
+              </div>
+            </div>
+            
+            <span class="mt-auto text-xs font-semibold uppercase tracking-[0.3em] text-emerald-200">Mulai pembelajaran →</span>
+          </a>
+
+          <a
+            href="03-form-handling.php"
+            class="card group relative flex flex-col gap-4 rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-xl shadow-slate-900/40 transition hover:border-emerald-400/50 hover:bg-slate-900/90"
+          >
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/20 text-lg font-bold text-emerald-300">
+                3
+              </span>
+              <div>
+                <h2 class="text-lg font-semibold text-white group-hover:text-emerald-300">Form Handling & Validasi</h2>
+                <p class="text-xs text-slate-400">120 menit</p>
+              </div>
+            </div>
+            
+            <p class="text-sm text-slate-300">Membangun form aman dengan validasi server-side dan penyimpanan sesi.</p>
+            
+            <div class="space-y-3">
+              <div>
+                <h4 class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">Konsep Utama</h4>
+                <div class="mt-2 flex flex-wrap gap-1">
+                  <span class="rounded-full bg-slate-800/60 px-2 py-1 text-xs text-slate-300">$_POST/$_GET</span>
+                  <span class="rounded-full bg-slate-800/60 px-2 py-1 text-xs text-slate-300">Validation</span>
+                  <span class="rounded-full bg-slate-800/60 px-2 py-1 text-xs text-slate-300">Sessions</span>
+                  <span class="rounded-full bg-slate-800/60 px-2 py-1 text-xs text-slate-300">Security</span>
+                </div>
+              </div>
+              
+              <div>
+                <h4 class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">Tags</h4>
+                <div class="mt-2 flex flex-wrap gap-2">
+                  <span class="rounded-full border border-emerald-400/40 bg-emerald-500/15 px-2 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-emerald-200">Form</span>
+                  <span class="rounded-full border border-emerald-400/40 bg-emerald-500/15 px-2 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-emerald-200">Validation</span>
+                  <span class="rounded-full border border-emerald-400/40 bg-emerald-500/15 px-2 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-emerald-200">Session</span>
+                </div>
+              </div>
+            </div>
+            
+            <span class="mt-auto text-xs font-semibold uppercase tracking-[0.3em] text-emerald-200">Mulai pembelajaran →</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="rounded-3xl border border-white/10 bg-slate-900/70 p-8 shadow-xl shadow-slate-900/40">
+        <h2 class="text-2xl font-semibold text-white">Tujuan Pembelajaran</h2>
+        <div class="mt-6 grid gap-4 md:grid-cols-2">
+          <div class="flex items-start gap-3 rounded-2xl border border-white/5 bg-white/5 p-4">
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-xs font-bold text-emerald-300">1</span>
+            <p class="text-sm text-slate-300">Memahami sintaks dasar PHP dan perbedaannya dengan JavaScript</p>
+          </div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/5 bg-white/5 p-4">
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-xs font-bold text-emerald-300">2</span>
+            <p class="text-sm text-slate-300">Mengelola data menggunakan variabel, array, dan struktur kontrol</p>
+          </div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/5 bg-white/5 p-4">
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-xs font-bold text-emerald-300">3</span>
+            <p class="text-sm text-slate-300">Membangun form interaktif dengan validasi server-side</p>
+          </div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/5 bg-white/5 p-4">
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-xs font-bold text-emerald-300">4</span>
+            <p class="text-sm text-slate-300">Menerapkan keamanan dasar dalam pengolahan input pengguna</p>
+          </div>
+          <div class="flex items-start gap-3 rounded-2xl border border-white/5 bg-white/5 p-4">
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-xs font-bold text-emerald-300">5</span>
+            <p class="text-sm text-slate-300">Menggunakan session untuk menyimpan data antar request</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="../back-button.js"></script>
+  </body>
+</html>
