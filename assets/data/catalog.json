@@ -1,0 +1,475 @@
+{
+  "modules": [
+    {
+      "id": "01",
+      "folder": "pertemuan-01-fondasi-html",
+      "title": "Fondasi HTML",
+      "subtitle": "Bangun struktur pertamamu.",
+      "description": "Dari halaman kosong menjadi profil digital. Kenali elemen, susun konten, dan pahami bahasa dasar web.",
+      "category": "Fondasi",
+      "tech": "HTML",
+      "symbol": "</>",
+      "color": "orange",
+      "level": "Pemula",
+      "outcome": "Sebuah halaman profil pribadi",
+      "objectives": [
+        "Menyusun struktur dokumen HTML yang valid.",
+        "Menggunakan heading, link, gambar, dan daftar.",
+        "Membuat halaman profil dengan konten yang bermakna."
+      ],
+      "challenge": "Buat profilmu dengan satu judul utama, bio singkat, daftar tiga hobi, dan tautan ke karya atau akun GitHub.",
+      "quiz": {
+        "question": "Elemen mana yang paling tepat untuk judul utama sebuah halaman?",
+        "options": [
+          "<p> dengan font besar",
+          "<h1>",
+          "<div class=\"judul\">"
+        ],
+        "answer": 1,
+        "explanation": "<h1> memberi makna judul utama pada dokumen. Ukuran teks saja tidak memberikan struktur semantik kepada browser dan pembaca layar."
+      },
+      "count": 8,
+      "minutes": 5
+    },
+    {
+      "id": "02",
+      "folder": "pertemuan-02-fondasi-css",
+      "title": "Fondasi CSS",
+      "subtitle": "Beri karakter pada karyamu.",
+      "description": "Mainkan warna, tipografi, dan ruang. Ubah halaman sederhana menjadi pengalaman yang nyaman dilihat.",
+      "category": "Fondasi",
+      "tech": "CSS",
+      "symbol": "{ }",
+      "color": "blue",
+      "level": "Pemula",
+      "outcome": "Halaman profil dengan gaya sendiri",
+      "objectives": [
+        "Menghubungkan stylesheet dan memilih elemen.",
+        "Membedakan margin, border, padding, dan konten.",
+        "Menata halaman responsif yang nyaman dibaca."
+      ],
+      "challenge": "Berikan identitas pada profil HTML-mu: atur warna utama, jarak, dan ukuran teks. Pastikan tetap terbaca pada layar ponsel.",
+      "quiz": {
+        "question": "Bagian box model mana yang memberi ruang antara konten dan border?",
+        "options": [
+          "Margin",
+          "Padding",
+          "Outline"
+        ],
+        "answer": 1,
+        "explanation": "Padding adalah ruang di dalam border. Margin memberi jarak di luar border, sedangkan outline tidak menambah ruang pada layout."
+      },
+      "count": 7,
+      "minutes": 8
+    },
+    {
+      "id": "03",
+      "folder": "pertemuan-03-bootstrap-grid",
+      "title": "Bootstrap & Grid",
+      "subtitle": "Susun layout, lebih cepat.",
+      "description": "Bangun halaman responsif dengan grid 12 kolom, komponen, dan utility Bootstrap.",
+      "category": "Framework",
+      "tech": "Bootstrap",
+      "symbol": "B",
+      "color": "purple",
+      "level": "Menengah",
+      "outcome": "Landing page responsif",
+      "objectives": [
+        "Memasang Bootstrap melalui CDN.",
+        "Menyusun container, row, dan kolom responsif.",
+        "Menggabungkan komponen menjadi landing page."
+      ],
+      "challenge": "Susun landing page dengan navigasi, tiga kartu fitur, dan footer. Buat kartu bertumpuk di layar kecil.",
+      "quiz": {
+        "question": "Apa fungsi class col-md-6 pada sistem grid Bootstrap?",
+        "options": [
+          "Lebar 6 piksel di semua layar",
+          "Mengisi 6 dari 12 kolom mulai breakpoint md",
+          "Membuat 6 baris"
+        ],
+        "answer": 1,
+        "explanation": "col-md-6 mengisi separuh lebar baris mulai breakpoint md. Ukuran layar yang lebih kecil mengikuti aturan grid lain yang diterapkan."
+      },
+      "count": 5,
+      "minutes": 10
+    },
+    {
+      "id": "04",
+      "folder": "pertemuan-04-tailwind-css",
+      "title": "Tailwind CSS",
+      "subtitle": "Rangkai kelas, wujudkan ide.",
+      "description": "Eksplorasi utility-first untuk merancang komponen yang terasa milikmu. Materi menggunakan Tailwind v3.",
+      "category": "Framework",
+      "tech": "Tailwind",
+      "symbol": "≈",
+      "color": "cyan",
+      "level": "Menengah",
+      "outcome": "Koleksi komponen antarmuka",
+      "objectives": [
+        "Memahami pola utility-first.",
+        "Menggabungkan utility untuk spacing, warna, dan layout.",
+        "Membuat variasi komponen responsif."
+      ],
+      "challenge": "Buat kartu produk dengan gambar, harga, dan tombol. Tambahkan keadaan hover serta layout yang menyesuaikan layar.",
+      "quiz": {
+        "question": "Apa inti pendekatan utility-first?",
+        "options": [
+          "Menulis semua CSS sebagai inline style",
+          "Menggabungkan class kecil dengan fungsi spesifik",
+          "Memakai satu komponen yang tidak bisa diubah"
+        ],
+        "answer": 1,
+        "explanation": "Utility-first menyusun tampilan melalui class yang punya tugas spesifik, misalnya padding, warna, atau display. Utility dapat digabungkan untuk membentuk komponen."
+      },
+      "count": 2,
+      "minutes": 8
+    },
+    {
+      "id": "05",
+      "folder": "pertemuan-05-php-dasar",
+      "title": "Dasar PHP",
+      "subtitle": "Kenali sisi server.",
+      "description": "Pelajari variabel, logika, fungsi, dan penanganan form. Jalankan contoh dengan server PHP lokal.",
+      "category": "Backend",
+      "tech": "PHP",
+      "symbol": "php",
+      "color": "violet",
+      "level": "Menengah",
+      "outcome": "Form kontak dengan validasi",
+      "objectives": [
+        "Menjalankan PHP melalui server lokal.",
+        "Menggunakan variabel, percabangan, loop, dan fungsi.",
+        "Memvalidasi input serta mengamankan output HTML."
+      ],
+      "challenge": "Buat form kontak dengan nama, email, dan pesan. Validasi field kosong dan tampilkan hasil dengan htmlspecialchars.",
+      "quiz": {
+        "question": "Di mana kode PHP diproses saat pengguna membuka halaman PHP?",
+        "options": [
+          "Di mesin server yang menjalankan PHP",
+          "Di CSS browser",
+          "Di localStorage pengguna"
+        ],
+        "answer": 0,
+        "explanation": "PHP dieksekusi oleh server. Browser menerima hasilnya, biasanya HTML. Hosting statis seperti GitHub Pages tidak mengeksekusi PHP."
+      },
+      "count": 3,
+      "minutes": 5
+    },
+    {
+      "id": "06",
+      "folder": "pertemuan-06-javascript-data",
+      "title": "JavaScript & Data",
+      "subtitle": "Beri ingatan pada aplikasi.",
+      "description": "Kelola data dengan array dan JSON, simpan di browser, lalu bangun to-do app sederhana.",
+      "category": "JavaScript",
+      "tech": "JavaScript",
+      "symbol": "JS",
+      "color": "yellow",
+      "level": "Menengah",
+      "outcome": "To-do app yang menyimpan data",
+      "objectives": [
+        "Mengolah array dan object menjadi data tampilan.",
+        "Menggunakan JSON untuk menyimpan dan membaca data.",
+        "Membangun to-do app dengan penyimpanan lokal."
+      ],
+      "challenge": "Buat daftar tugas yang bisa ditambah, ditandai selesai, dan dihapus. Simpan datanya ke localStorage saat dijalankan di browser lokal.",
+      "quiz": {
+        "question": "Bagaimana cara menyimpan object ke localStorage?",
+        "options": [
+          "Langsung simpan object sebagai nilai",
+          "Ubah menjadi string dengan JSON.stringify",
+          "Ubah object menjadi elemen <div>"
+        ],
+        "answer": 1,
+        "explanation": "localStorage menyimpan string. Gunakan JSON.stringify saat menyimpan, lalu JSON.parse saat membacanya, dengan penanganan data rusak atau storage yang diblokir."
+      },
+      "count": 2,
+      "minutes": 22
+    },
+    {
+      "id": "07",
+      "folder": "pertemuan-07-javascript-async",
+      "title": "Async & API",
+      "subtitle": "Terhubung, tanpa menunggu.",
+      "description": "Pahami promise, async/await, dan fetch. Tangani loading serta error dengan baik.",
+      "category": "JavaScript",
+      "tech": "Async",
+      "symbol": "↗",
+      "color": "mint",
+      "level": "Lanjutan",
+      "outcome": "Antarmuka data asynchronous",
+      "objectives": [
+        "Memahami promise dan async/await.",
+        "Mengambil data dengan fetch dan membaca respons.",
+        "Menampilkan keadaan loading, berhasil, serta gagal."
+      ],
+      "challenge": "Bangun tombol pemuat data dengan indikator loading. Tangani kegagalan menggunakan try/catch dan berikan tombol untuk mencoba lagi.",
+      "quiz": {
+        "question": "Mengapa respons fetch perlu diperiksa melalui response.ok?",
+        "options": [
+          "Karena fetch selalu melempar error untuk HTTP 404",
+          "Karena respons HTTP error masih dapat memenuhi promise fetch",
+          "Karena response.ok mengubah respons menjadi JSON"
+        ],
+        "answer": 1,
+        "explanation": "fetch tidak otomatis menolak promise untuk status HTTP seperti 404 atau 500. Periksa response.ok dan tangani kesalahan sebelum memakai data."
+      },
+      "count": 1,
+      "minutes": 29
+    }
+  ],
+  "exercises": [
+    {
+      "id": "01-01",
+      "module": "01",
+      "title": "Struktur HTML dasar",
+      "path": "pertemuan-01-fondasi-html/01-struktur-dasar.html",
+      "language": "html",
+      "project": false,
+      "importable": true
+    },
+    {
+      "id": "01-02",
+      "module": "01",
+      "title": "Heading & hierarki",
+      "path": "pertemuan-01-fondasi-html/02-heading.html",
+      "language": "html",
+      "project": false,
+      "importable": true
+    },
+    {
+      "id": "01-03",
+      "module": "01",
+      "title": "Paragraf & format teks",
+      "path": "pertemuan-01-fondasi-html/03-paragraf.html",
+      "language": "html",
+      "project": false,
+      "importable": true
+    },
+    {
+      "id": "01-04",
+      "module": "01",
+      "title": "Menghubungkan halaman",
+      "path": "pertemuan-01-fondasi-html/04-link.html",
+      "language": "html",
+      "project": false,
+      "importable": true
+    },
+    {
+      "id": "01-05",
+      "module": "01",
+      "title": "Gambar yang bermakna",
+      "path": "pertemuan-01-fondasi-html/05-gambar.html",
+      "language": "html",
+      "project": false,
+      "importable": true
+    },
+    {
+      "id": "01-06",
+      "module": "01",
+      "title": "Daftar & pengelompokan",
+      "path": "pertemuan-01-fondasi-html/06-list.html",
+      "language": "html",
+      "project": false,
+      "importable": true
+    },
+    {
+      "id": "01-07",
+      "module": "01",
+      "title": "Container & struktur",
+      "path": "pertemuan-01-fondasi-html/07-div-container.html",
+      "language": "html",
+      "project": false,
+      "importable": true
+    },
+    {
+      "id": "01-08",
+      "module": "01",
+      "title": "Proyek: halaman profil",
+      "path": "pertemuan-01-fondasi-html/studi-kasus-profile.html",
+      "language": "html",
+      "project": true,
+      "importable": true
+    },
+    {
+      "id": "02-01",
+      "module": "02",
+      "title": "Menghubungkan CSS eksternal",
+      "path": "pertemuan-02-fondasi-css/01-css-eksternal.html",
+      "language": "html",
+      "project": false,
+      "importable": true
+    },
+    {
+      "id": "02-02",
+      "module": "02",
+      "title": "Selector & specificity",
+      "path": "pertemuan-02-fondasi-css/02-selector.html",
+      "language": "html",
+      "project": false,
+      "importable": true
+    },
+    {
+      "id": "02-03",
+      "module": "02",
+      "title": "Tipografi & properti teks",
+      "path": "pertemuan-02-fondasi-css/03-properti-text.html",
+      "language": "html",
+      "project": false,
+      "importable": true
+    },
+    {
+      "id": "02-04",
+      "module": "02",
+      "title": "Warna & background",
+      "path": "pertemuan-02-fondasi-css/04-warna-background.html",
+      "language": "html",
+      "project": false,
+      "importable": true
+    },
+    {
+      "id": "02-05",
+      "module": "02",
+      "title": "Mengenal box model",
+      "path": "pertemuan-02-fondasi-css/05-box-model.html",
+      "language": "html",
+      "project": false,
+      "importable": true
+    },
+    {
+      "id": "02-06",
+      "module": "02",
+      "title": "Layout dasar",
+      "path": "pertemuan-02-fondasi-css/06-layout-dasar.html",
+      "language": "html",
+      "project": false,
+      "importable": true
+    },
+    {
+      "id": "02-07",
+      "module": "02",
+      "title": "Proyek: profil dengan gaya",
+      "path": "pertemuan-02-fondasi-css/studi-kasus-profile-styled.html",
+      "language": "html",
+      "project": true,
+      "importable": true
+    },
+    {
+      "id": "03-01",
+      "module": "03",
+      "title": "Setup Bootstrap via CDN",
+      "path": "pertemuan-03-bootstrap-grid/01-bootstrap-cdn.html",
+      "language": "html",
+      "project": false,
+      "importable": false
+    },
+    {
+      "id": "03-02",
+      "module": "03",
+      "title": "Grid 12 kolom",
+      "path": "pertemuan-03-bootstrap-grid/02-grid-system.html",
+      "language": "html",
+      "project": false,
+      "importable": false
+    },
+    {
+      "id": "03-03",
+      "module": "03",
+      "title": "Komponen Bootstrap",
+      "path": "pertemuan-03-bootstrap-grid/03-bootstrap-components.html",
+      "language": "html",
+      "project": false,
+      "importable": false
+    },
+    {
+      "id": "03-04",
+      "module": "03",
+      "title": "Utilities & helper classes",
+      "path": "pertemuan-03-bootstrap-grid/04-bootstrap-utilities.html",
+      "language": "html",
+      "project": false,
+      "importable": false
+    },
+    {
+      "id": "03-05",
+      "module": "03",
+      "title": "Proyek: landing page",
+      "path": "pertemuan-03-bootstrap-grid/studi-kasus-bootstrap.html",
+      "language": "html",
+      "project": true,
+      "importable": false
+    },
+    {
+      "id": "04-01",
+      "module": "04",
+      "title": "Pengenalan utility-first",
+      "path": "pertemuan-04-tailwind-css/01-pengenalan-tailwind.html",
+      "language": "html",
+      "project": false,
+      "importable": false
+    },
+    {
+      "id": "04-02",
+      "module": "04",
+      "title": "Merangkai komponen Tailwind",
+      "path": "pertemuan-04-tailwind-css/02-tailwind-components.html",
+      "language": "html",
+      "project": false,
+      "importable": false
+    },
+    {
+      "id": "05-01",
+      "module": "05",
+      "title": "Sintaks, variabel & tipe data",
+      "path": "pertemuan-05-php-dasar/01-php-dasar.php",
+      "language": "php",
+      "project": false,
+      "importable": false
+    },
+    {
+      "id": "05-02",
+      "module": "05",
+      "title": "Control flow & struktur data",
+      "path": "pertemuan-05-php-dasar/02-control-flow.php",
+      "language": "php",
+      "project": false,
+      "importable": false
+    },
+    {
+      "id": "05-03",
+      "module": "05",
+      "title": "Form handling & validasi",
+      "path": "pertemuan-05-php-dasar/03-form-handling.php",
+      "language": "php",
+      "project": false,
+      "importable": false
+    },
+    {
+      "id": "06-01",
+      "module": "06",
+      "title": "Data & browser storage",
+      "path": "pertemuan-06-javascript-data/01-data-storage.html",
+      "language": "html",
+      "project": false,
+      "importable": false
+    },
+    {
+      "id": "06-02",
+      "module": "06",
+      "title": "Proyek: to-do app",
+      "path": "pertemuan-06-javascript-data/02-todo-app.html",
+      "language": "html",
+      "project": true,
+      "importable": false
+    },
+    {
+      "id": "07-01",
+      "module": "07",
+      "title": "Promise, async/await & fetch",
+      "path": "pertemuan-07-javascript-async/01-async-programming.html",
+      "language": "html",
+      "project": false,
+      "importable": false
+    }
+  ]
+}
